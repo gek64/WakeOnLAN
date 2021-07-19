@@ -3,7 +3,6 @@ package main
 import (
 	"flag"
 	"fmt"
-	"gek"
 	"log"
 	"os"
 )
@@ -79,8 +78,18 @@ func showVersion() {
 	fmt.Println(versionInfo)
 }
 
+func isFlagPassed(name string) bool {
+	found := false
+	flag.Visit(func(f *flag.Flag) {
+		if f.Name == name {
+			found = true
+		}
+	})
+	return found
+}
+
 func main() {
-	if gek.IsFlagPassed("m") {
+	if isFlagPassed("m") {
 		magicPacket, err := ParseMagicPacket(cliMAC, cliPassword)
 		if err != nil {
 			log.Fatal(err)
