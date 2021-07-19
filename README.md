@@ -27,6 +27,4 @@ Example:
   ```
   
   ## Build
-  -  Download `https://github.com/gek64/gek` ,extract all the files to a folder named `gek`
-  -  Put the folder `gek` and this program folder in the same location
   -  Run `go build` in this program folder 
