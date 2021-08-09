@@ -1,5 +1,7 @@
 # Wake-on-LAN
-Wake-on-LAN program written in golang 
+Wake-on-LAN (WOL)
+- with password support
+- written in golang 
 
 ## Usage
 ```
