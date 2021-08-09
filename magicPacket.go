@@ -45,7 +45,7 @@ func ParseMagicPacket(hardwareAddr string, password ...interface{}) (MagicPacket
 	if len(password) != 0 {
 		passwd, err := net.ParseMAC(password[0].(string))
 		if err != nil {
-			return MagicPacket{}, fmt.Errorf("invalid password %s", password[0])
+			return MagicPacket{}, fmt.Errorf("invalid password %v", password[0])
 		}
 
 		for i := 0; i < 6; i++ {

@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"gek_flag"
 	"log"
+	"net"
 	"os"
 )
 
@@ -25,11 +27,20 @@ func init() {
 	flag.BoolVar(&cliVersion, "v", false, "show version")
 	flag.Parse()
 
+	// 判断IP是否合法
+	if ip := net.ParseIP(cliAddr); ip == nil {
+		log.Fatalf("%s is not a valid host", cliAddr)
+	}
+	// 判断端口是否合法
+	if cliPort < 0 || cliPort > 65535 {
+		log.Fatalf("%d is not a valid port", cliPort)
+	}
+
 	// 重写显示用法函数
 	flag.Usage = func() {
 		var helpInfo = `
 Version:
-  1.00
+  1.01
 
 Usage:
   wakeonlan {Command} [Option]
@@ -52,14 +63,8 @@ Example:
 		fmt.Println(helpInfo)
 	}
 
-	// 如果无args,打印用法后退出
-	if len(os.Args) == 1 {
-		flag.Usage()
-		os.Exit(0)
-	}
-
-	// 打印帮助信息
-	if cliHelp {
+	// 如果无 args 或者 指定 h 参数,打印用法后退出
+	if len(os.Args) == 1 || cliHelp {
 		flag.Usage()
 		os.Exit(0)
 	}
@@ -74,22 +79,15 @@ Example:
 func showVersion() {
 	var versionInfo = `Changelog:
   1.00:
-    - First release`
+    - First release
+  1.01:
+    - Modify fmt.Errorf() to avoid failure if the password is not a string`
 	fmt.Println(versionInfo)
 }
 
-func isFlagPassed(name string) bool {
-	found := false
-	flag.Visit(func(f *flag.Flag) {
-		if f.Name == name {
-			found = true
-		}
-	})
-	return found
-}
-
 func main() {
-	if isFlagPassed("m") {
+	// 处理 m 参数
+	if gek_flag.IsFlagPassed("m") {
 		magicPacket, err := ParseMagicPacket(cliMAC, cliPassword)
 		if err != nil {
 			log.Fatal(err)
