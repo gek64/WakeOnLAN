@@ -19,7 +19,5 @@ jobs:
         go-version: 1.16
 
     - name: Build
-      run: go build -v ./...
+      run: ls ${{ github.workspace }}
 
-    - name: Test
-      run: go test -v ./...
