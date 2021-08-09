@@ -14,9 +14,5 @@ jobs:
     - uses: actions/setup-go@v2
       with:
         go-version: 1.16
-    - run: cd ${{ github.workspace }}
-    - run: cd ..
     - run: git clone https://github.com/gek64/gek.git
-    - run: ls /home/runner/work/WakeOnLAN
-    - run: cd ${{ github.workspace }}
-    - run: go -v
+    - run: ls -R
