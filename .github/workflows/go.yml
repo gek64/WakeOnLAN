@@ -7,12 +7,14 @@ on:
       - 'docs/**'
       - '.github/**'
       - 'README.md'
+      - 'LICENSE'
   pull_request:
     branches: [ main ]
     paths-ignore:
       - 'docs/**'
       - '.github/**'
       - 'README.md'
+      - 'LICENSE'
 
 jobs:
   build:
