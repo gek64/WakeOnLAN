@@ -31,13 +31,14 @@ jobs:
     - run: curl -LOJ https://github.com/gek64/build-apps-scripts/raw/main/gobuilder.sh
     - run: ln -s ${{ github.workspace }}/gek ../gek
     - run: bash gobuilder.sh --os linux --arch amd64
+    - run: bash gobuilder.sh --os windows --arch amd64
     - run: ls .. -R -las
     - run: git push --delete origin latest
     
-    - name: Upload output file
+    - name: Upload artifacts
       uses: actions/upload-artifact@v2
       with:
-        name: bins
+        name: build_files
         path: bin/*
         
   release:
@@ -47,10 +48,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     
-    - name: Download a single artifact
+    - name: Download all workflow run artifacts
       uses: actions/download-artifact@v2
       with:
-        name: bins
+        name: build_files
+        path: bin
         
     - run: ls .. -R -las
     
