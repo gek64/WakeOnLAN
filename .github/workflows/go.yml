@@ -16,6 +16,4 @@ jobs:
         go-version: 1.16
     - run: git clone https://github.com/gek64/gek.git
     - run: ln -s ./gek ../gek
-    - run: ls -R
-    - run: cd ..
-    - run: ls -R
+    - run: ls .. -R -las
