@@ -52,6 +52,11 @@ jobs:
       with:
         name: build_files
         path: bin
-        
-    - run: ls .. -R -las
+    
+    - name: Release
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "bin/*"
+        tag: 'latest'
+        token: ${{ secrets.GITHUB_TOKEN }}
     
