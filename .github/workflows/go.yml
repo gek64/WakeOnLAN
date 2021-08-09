@@ -17,5 +17,6 @@ jobs:
     - run: cd ${{ github.workspace }}
     - run: cd ..
     - run: git clone https://github.com/gek64/gek.git
+    - run: ls /home/runner/work/WakeOnLAN
     - run: cd ${{ github.workspace }}
-    - run: go build
+    - run: go -v
