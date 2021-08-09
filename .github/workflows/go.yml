@@ -17,3 +17,4 @@ jobs:
     - run: git clone https://github.com/gek64/gek.git
     - run: ln -s ./gek ../gek
     - run: ls .. -R -las
+    - run: go build
