@@ -20,6 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    
     - uses: actions/setup-go@v2
       with:
         go-version: '^1.16'
@@ -28,4 +29,9 @@ jobs:
     - run: ln -s ${{ github.workspace }}/gek ../gek
     - run: bash gobuilder.sh --os linux --arch amd64
     - run: ls .. -R -las
-    - run: git push --delete origin v1.0.0
+    - run: git push --delete origin v1.00
+    
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "bin/**"
+        token: ${{ secrets.GITHUB_TOKEN }}
