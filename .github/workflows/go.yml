@@ -29,9 +29,10 @@ jobs:
     - run: ln -s ${{ github.workspace }}/gek ../gek
     - run: bash gobuilder.sh --os linux --arch amd64
     - run: ls .. -R -las
-    - run: git push --delete origin v1.00
+    - run: git push --delete origin v1.01
     
     - uses: ncipollo/release-action@v1
       with:
         artifacts: "bin/**"
+        tag: 'latest'
         token: ${{ secrets.GITHUB_TOKEN }}
