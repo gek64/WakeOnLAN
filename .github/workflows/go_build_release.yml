@@ -33,6 +33,7 @@ jobs:
     - run: bash gobuilder.sh --os linux --arch amd64
     - run: bash gobuilder.sh --os windows --arch amd64
     - run: ls .. -R -las
+    - run: git push --delete origin latest
     
     - name: Upload artifacts
       uses: actions/upload-artifact@v2
