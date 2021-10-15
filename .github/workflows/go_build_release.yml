@@ -37,7 +37,7 @@ jobs:
     - run: git clone https://github.com/gek64/gek.git
     - run: curl -LOJ https://github.com/gek64/build-apps-scripts/raw/main/gobuilder.sh
     - run: ln -s ${{ github.workspace }}/gek ../gek
-    - run: bash gobuilder.sh --os linux --arch amd64
+    - run: bash gobuilder.sh --all
     - run: ls .. -R -las
     
     - name: Delete latest release
