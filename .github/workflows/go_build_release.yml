@@ -35,7 +35,7 @@ jobs:
         go-version: '^1.17'
 
 
-    - name: Download GeoLite.mmdb
+    - name: Build
       run: |
         git clone https://github.com/gek64/gek.git
         curl -LOJ https://github.com/gek64/build-apps-scripts/raw/main/gobuilder.sh
