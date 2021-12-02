@@ -43,13 +43,21 @@ jobs:
 
           mkdir -p bin
 
+          # 编译批量编译程序
+          git clone https://github.com/gek64/gobuilder.git
+          cd gobuilder
+          go build -v -trimpath -ldflags "-s -w" -o "${{ github.workspace }}/gobuilder_runner"
+          chmod +x "${{ github.workspace }}/gobuilder_runner"
+          cd ${{ github.workspace }}
+
           # 编译所有支持的架构/系统对
-          curl -Lo gobuilder https://github.com/gek64/gobuilder/releases/latest/download/gobuilder-linux-amd64
-          chmod +x gobuilder
-          ./gobuilder -d bin -main
+          "${{ github.workspace }}/gobuilder_runner" -main -d bin
 
           # 显示文件路径(debug)
           # ls .. -R -las
+
+          # 获取sha256 checksum
+          sha256sum bin/* > bin/SHA256SUMS.txt
 
           # 获取版本信息
           echo "$(go run . -v)" > bin/version.txt
