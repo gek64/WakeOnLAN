@@ -1,4 +1,4 @@
-name: 'nightly artifacts cleanup'
+name: 'artifacts cleanup'
 on:
   schedule:
     - cron: '0 13 */7 * *'
@@ -10,5 +10,5 @@ jobs:
     steps:
       - uses: kolpav/purge-artifacts-action@v1
         with:
-          token: ${{ secrets.RELEASE_KEY }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           expire-in: 0
