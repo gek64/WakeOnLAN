@@ -35,11 +35,7 @@ func init() {
 
 	// 重写显示用法函数
 	flag.Usage = func() {
-		var helpInfo = `
-Version:
-  1.01
-
-Usage:
+		var helpInfo = `Usage:
   wakeonlan {Command} [Option] MAC_ADDRESS
 
 Command:
@@ -62,7 +58,7 @@ Example:
 	// 如果无 args 或者 指定 h 参数,打印用法后退出
 	if len(os.Args) == 1 || cliHelp {
 		flag.Usage()
-		//os.Exit(0)
+		os.Exit(0)
 	}
 
 	// 打印版本信息
