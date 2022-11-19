@@ -27,13 +27,8 @@ Example:
 ## Build
 ### Example
 ```sh
-# dependence
-git clone https://github.com/gek64/gek.git
-
 git clone https://github.com/gek64/WakeOnLAN.git
-
 cd WakeOnLAN
-
 go build -v -trimpath -ldflags "-s -w"
 ```
 
