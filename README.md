@@ -19,7 +19,7 @@ Option:
                                                                              
 Example:                                                                     
   1) wakeonlan 1A-2B-3C-4D-5E-6F                                             
-  2) wakeonlan 1A-2B-3C-4D-5E-6F -pw AA-BB-CC-DD-EE-FF -a 192.168.1.255 -p 9 
+  2) wakeonlan -pw AA-BB-CC-DD-EE-FF -a 192.168.1.255 -p 9 1A-2B-3C-4D-5E-6F
   3) wakeonlan -h                                                            
   4) wakeonlan -v 
 ```

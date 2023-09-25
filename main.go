@@ -49,7 +49,7 @@ Option:
 
 Example:
   1) wakeonlan 1A-2B-3C-4D-5E-6F
-  2) wakeonlan 1A-2B-3C-4D-5E-6F -pw AA-BB-CC-DD-EE-FF -a 192.168.1.255 -p 9 
+  2) wakeonlan -pw AA-BB-CC-DD-EE-FF -a 192.168.1.255 -p 9 1A-2B-3C-4D-5E-6F
   3) wakeonlan -h
   4) wakeonlan -v`
 		fmt.Println(helpInfo)
@@ -69,7 +69,7 @@ Example:
 }
 
 func showVersion() {
-	var versionInfo = `v1.02`
+	var versionInfo = `v1.03`
 	fmt.Println(versionInfo)
 }
 
@@ -80,7 +80,9 @@ func showChangelog() {
   1.01:
     - Modify fmt.Errorf() to avoid failure if the password is not a string
   1.02:
-    - Change terminal command`
+    - Change terminal command
+  1.03:
+    - Modify readme`
 	fmt.Println(versionInfo)
 }
 
@@ -98,6 +100,6 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		fmt.Println("Magic packet send successfully!")
+		fmt.Println("magic packet send successfully!")
 	}
 }
