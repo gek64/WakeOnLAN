@@ -24,11 +24,22 @@ Example:
   4) wakeonlan -v 
 ```
 
-## Build
-### Example
+## Compile
+
 ```sh
 git clone https://github.com/gek64/WakeOnLAN.git
 cd WakeOnLAN
+go build -v -trimpath -ldflags "-s -w"
+```
+
+## For openwrt on mipsle router
+
+```sh
+git clone https://github.com/gek64/WakeOnLAN.git
+cd WakeOnLAN
+export GOOS=linux
+export GOARCH=mipsle
+export GOMIPS=softfloat
 go build -v -trimpath -ldflags "-s -w"
 ```
 
