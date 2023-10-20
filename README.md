@@ -29,7 +29,7 @@ Example:
 ```sh
 git clone https://github.com/gek64/WakeOnLAN.git
 cd WakeOnLAN
-go build -v -trimpath -ldflags "-s -w"
+go build -v -trimpath -ldflags "-s -w -extldflags -static"
 ```
 
 ## For openwrt on mipsle router
