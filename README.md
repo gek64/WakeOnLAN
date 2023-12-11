@@ -29,7 +29,8 @@ Example:
 ```sh
 git clone https://github.com/gek64/WakeOnLAN.git
 cd WakeOnLAN
-go build -v -trimpath -ldflags "-s -w -extldflags -static"
+export CGO_ENABLED=0
+go build -v -trimpath -ldflags "-s -w"
 ```
 
 ## For openwrt on mipsle router
@@ -40,6 +41,7 @@ cd WakeOnLAN
 export GOOS=linux
 export GOARCH=mipsle
 export GOMIPS=softfloat
+export CGO_ENABLED=0
 go build -v -trimpath -ldflags "-s -w"
 ```
 
